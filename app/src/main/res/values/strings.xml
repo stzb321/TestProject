@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FlowQuery</string>
+    <string name="send">发送</string>
+    <string name="action_settings">Settings</string>
+    <string name="sendNum">发送号码</string>
+    <string name="sendContent">发送内容</string>
+    <string name="title_activity_process">processActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+</resources>
