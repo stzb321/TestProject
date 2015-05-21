@@ -42,22 +42,22 @@ public class QueryManager {
         return isQueryIng;
     }
 
-    //ÊÇ·ñÕıÔÚ·¢ËÍ²éÑ¯¶ÌĞÅ
+    //æ˜¯å¦æ­£åœ¨å‘é€æŸ¥è¯¢çŸ­ä¿¡
     public boolean isSendingMsg(){
         return isSendingMsg;
     }
 
-    //ÊÇ·ñÕıÔÚµÈ´ıÔËÓªÉÌ»Ø¶ÌĞÅ
+    //æ˜¯å¦æ­£åœ¨ç­‰å¾…è¿è¥å•†å›çŸ­ä¿¡
     public boolean isWaitingMsg(){
         return isWaitingMsg;
     }
 
-    //ÊÇ·ñÕıÔÚ½âÎö¶ÌĞÅ
+    //æ˜¯å¦æ­£åœ¨è§£æçŸ­ä¿¡
     public boolean isParsingMsg(){
         return isParsingMsg;
     }
 
-    //ÊÇ·ñ³É¹¦½âÎö¶ÌĞÅ
+    //æ˜¯å¦æˆåŠŸè§£æçŸ­ä¿¡
     public boolean isParsedMsg(){
         return isParsedMsg;
     }
@@ -80,18 +80,18 @@ public class QueryManager {
         StringBuffer sb = new StringBuffer();
         if(isQueryIng()){
             if(isSendingMsg()){
-                sb.append("ÕıÔÚ·¢ËÍ²éÑ¯¶ÌĞÅ\n");
+                sb.append("æ­£åœ¨å‘é€æŸ¥è¯¢çŸ­ä¿¡\n");
             }
             if(isWaitingMsg()){
-                sb.append("ÕıÔÚµÈ´ıÔËÓªÉÌ·¢ËÍ¶ÌĞÅ\n");
+                sb.append("æ­£åœ¨ç­‰å¾…è¿è¥å•†å‘é€çŸ­ä¿¡\n");
             }
             if(isParsingMsg()){
-                sb.append("ÕıÔÚ½âÎö¶ÌĞÅ\n");
+                sb.append("æ­£åœ¨è§£æçŸ­ä¿¡\n");
             }
             if(isParsedMsg()){
-                sb.append("½âÎö¶ÌĞÅ³É¹¦\n");
+                sb.append("è§£æçŸ­ä¿¡æˆåŠŸ\n");
             }else{
-                sb.append("½âÎö¶ÌĞÅÊ§°Ü\n");
+                sb.append("è§£æçŸ­ä¿¡å¤±è´¥\n");
             }
         }
         return sb.toString();
@@ -105,13 +105,13 @@ public class QueryManager {
         sendMessage(queryNum,queryContent);
     }
 
-    //ÊÂ¼ş·Ö·¢£¬Í¨Öª½çÃæ¸üĞÂ
+    //äº‹ä»¶åˆ†å‘ï¼Œé€šçŸ¥ç•Œé¢æ›´æ–°
     public void dispatch(){
         ProcessActivity.getHandler().sendEmptyMessage(NOTIFY_STATE_CHANGE);
     }
 
 
-    /*********************************·¢ËÍ¶ÌĞÅÏà¹Ø  START****************************************/
+    /*********************************å‘é€çŸ­ä¿¡  START****************************************/
 
     public String SENT_SMS_ACTION = "SENT_SMS_ACTION";
     private SmsManager smsManager;
@@ -149,10 +149,10 @@ public class QueryManager {
     }
 
 
-    /*********************************·¢ËÍ¶ÌĞÅÏà¹Ø END**********************************/
+    /*********************************å‘é€çŸ­ä¿¡ END**********************************/
 
 
-    /*********************************½ÓÊÜ¶ÌĞÅÏà¹Ø StART**********************************/
+    /*********************************æ¥æ”¶çŸ­ä¿¡ StART**********************************/
     public static final String RECEIVE_SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
 
     private void receiveMessage(){
@@ -171,15 +171,15 @@ public class QueryManager {
                     for (SmsMessage message : messages) {
                         SMSAddress.append(message.getDisplayOriginatingAddress());
                         SMSContent.append(message.getDisplayMessageBody());
-                        System.out.println("À´ĞÅºÅÂë£º" + SMSAddress + "\n¶ÌĞÅÄÚÈİ£º" + SMSContent);
+                        System.out.println("å‘ä¿¡äºº" + SMSAddress + "\nå†…å®¹" + SMSContent);
                     }
-                    //Í£Ö¹¸Ã¹ã²¥¼ÌĞø´«µİ
+                    //é˜»æ­¢å¹¿æ’­ç»§ç»­
                     abortBroadcast();
                     context.unregisterReceiver(this);
                 }
             }
         },new IntentFilter(RECEIVE_SMS_ACTION));
     }
-    /*********************************½ÓÊÜ¶ÌĞÅÏà¹Ø END**********************************/
+    /*********************************æ¥æ”¶çŸ­ä¿¡ END**********************************/
 
 }

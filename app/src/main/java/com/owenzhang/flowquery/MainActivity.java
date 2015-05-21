@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             sendNum.setText(setting.getString("sendNum",""));
             sendContent.setText(setting.getString("sendContent",""));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("设置").setView(view).setPositiveButton("确定",new DialogInterface.OnClickListener(){
+            builder.setTitle("娴侀噺鏌ヨ").setView(view).setPositiveButton("纭畾",new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     SharedPreferences.Editor editor = setting.edit();
@@ -59,10 +59,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     String content = sendContent.getText().toString();
                     editor.putString("sendNum",num);
                     editor.putString("sendContent",content);
-                    editor.commit();
+                    editor.apply();
                     QueryManager.getInstance().saveQuerySetting(num,content);
                 }
-            }).setNeutralButton("取消", new DialogInterface.OnClickListener() {
+            }).setNeutralButton("鍙栨秷", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 
